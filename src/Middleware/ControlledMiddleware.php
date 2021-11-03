@@ -3,6 +3,7 @@
 namespace Controlled\Middleware;
 
 use Closure;
+use Controlled\Handle;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -38,22 +39,21 @@ class ControlledMiddleware
 
                 if ($response->ok()) {
                     if ($response['status']) {
-                        file_put_contents(base_path('tests\data.key'), "A");
+                        Handle::opned();
                         return $next($request);
                     }else {
-                        file_put_contents(base_path('tests\data.key'), "L");
+                        Handle::loked();
                         return redirect(route('locked'));
                     }
                 }else{
-                    file_put_contents(base_path('tests\data.key'), "L");
+                    Handle::loked();
                     return redirect(route('locked'));
                 }
 
-                file_put_contents(base_path('tests\data.key'), "L");
+                Handle::loked();
                 return redirect(route('locked'));
 
             } catch (Exception $e) {
-                info($e->getMessage());
                 return redirect(route('locked'));
             }
         }else {
