@@ -39,6 +39,8 @@ class ControlledUp extends Command
     {
         $testPath = base_path('tests\test.key');
 
+        file_put_contents(base_path('tests\.gitignore'), "*.key");
+
         file_put_contents(base_path('tests\data.key'), "A");
 
         if (file_exists($testPath)) {
