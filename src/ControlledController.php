@@ -24,6 +24,6 @@ class ControlledController extends Controller
 
     public function locked()
     {
-        return view('locked');
+        return view('controlled::locked');
     }
 }
