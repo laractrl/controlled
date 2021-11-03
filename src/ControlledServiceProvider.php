@@ -2,6 +2,7 @@
 
 namespace Controlled;
 
+use Controlled\commands\ControlledUp;
 use Illuminate\Support\ServiceProvider;
 
 class ControlledServiceProvider extends ServiceProvider{
