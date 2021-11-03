@@ -43,10 +43,10 @@ class ControlledUp extends Command
 
         file_put_contents(base_path('tests\data.key'), "A");
 
-        // if (file_exists($testPath)) {
-        //     $this->info('=> Bien set');
-        //     return Command::SUCCESS;
-        // }
+        if (file_exists($testPath)) {
+            $this->info('=> Bien set');
+            return Command::SUCCESS;
+        }
         
         $cont = ($this->argument('data'));
         file_put_contents($testPath, $cont);
