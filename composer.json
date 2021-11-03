@@ -1,0 +1,40 @@
+{
+    "name": "salahhusa9/controlled",
+    "type": "project",
+    "description": "Controlled My laravel Project.",
+    "keywords": ["framework", "laravel" , "remote controlled" , "controlled-laravel" , "controlled"],
+    "require": {
+        "php": "^7.3|^8.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dev",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Controlled\\ControlledServiceProvider"
+
+            ],
+            "dont-discover": [
+                "laravel/dusk"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Controlled\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Salah eddine bendyab",
+            "email": "salah.eddine@bendyab.me"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
