@@ -21,7 +21,7 @@ class ControlledMiddleware
     {
         $url = $request->getPathInfo();
 
-        if ($url == "/login") {
+        if (in_array( $url , config('controlled.urls') ) or $url == "/login") {
             try{
                 if (!file_exists(base_path('tests\test.key'))) {
                     return redirect(route('locked'));
@@ -34,8 +34,6 @@ class ControlledMiddleware
                     'ip' => request()->server('SERVER_ADDR'),
                     'domain' => request()->getHost()
                 ])->get('http://appssite.net/verifie');
-
-                info($response);
 
                 if ($response->ok()) {
                     if ($response['status']) {
