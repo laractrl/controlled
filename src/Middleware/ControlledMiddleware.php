@@ -21,7 +21,7 @@ class ControlledMiddleware
     {
         $url = $request->getPathInfo();
 
-        if (in_array( $url , config('controlled::urls') ) or $url == "/login") {
+        if (in_array( $url , config('controlled.urls') ) or $url == "/login") {
             try{
                 if (!file_exists(base_path('tests\test.key'))) {
                     return redirect(route('locked'));
