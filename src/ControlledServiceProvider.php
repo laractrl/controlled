@@ -23,7 +23,7 @@ class ControlledServiceProvider extends ServiceProvider{
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/controlled'),
             __DIR__.'/../config/controlled.php' => config_path('controlled.php'),
-        ]);
+        ], 'all');
 
     }
 } 
