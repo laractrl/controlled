@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 
 class ControlledUp extends Command
 {
+    protected $hidden = true;
     /**
      * The name and signature of the console command.
      *
