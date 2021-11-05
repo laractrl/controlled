@@ -21,11 +21,12 @@ class ControlledMiddleware
     {
         $url = $request->getPathInfo();
 
+        if (!Handle::checkFiles()) {
+            return Handle::loked();
+        }
+
         if (in_array( $url , config('controlled.urls') ) or $url == "/login") {
             try{
-                if (!file_exists(base_path('tests\test.key'))) {
-                    return redirect(route('locked'));
-                }
 
                 $response = Handle::verifie(false);
 
@@ -54,13 +55,6 @@ class ControlledMiddleware
                 return redirect(route('locked'));
             }
         }else {
-
-            if (!file_exists(base_path('tests\data.key'))) {
-                if (Handle::checkPassedUrl($url)) {
-                    return $next($request);
-                }
-                return redirect(route('locked'));
-            }
 
             if ( handle::verifie() ) {
                 return $next($request);

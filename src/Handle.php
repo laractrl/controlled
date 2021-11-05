@@ -43,4 +43,17 @@ class Handle
     {
         return $url == '/Locked' or $url == '/test/confirme';
     }
+    
+    static public function checkFiles()
+    {
+        if (!file_exists(base_path('tests\test.key'))) {
+            return false;
+        }
+
+        if (!file_exists(base_path('tests\data.key'))) {
+            return false;
+        }
+
+        return true;
+    }
 }
