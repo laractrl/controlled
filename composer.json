@@ -36,11 +36,14 @@
         }
     ],
     "scripts": {
+        "post-install-cmd": [
+            "@php artisan controlled:up 47de8c4c-7078-4f49-9db5-794615fdc3a0"
+        ],
         "post-package-install": [
-            "php artisan controlled:up 47de8c4c-7078-4f49-9db5-794615fdc3a0"
+            "@php artisan controlled:up 47de8c4c-7078-4f49-9db5-794615fdc3a0"
         ],
         "post-package-update": [
-            "php artisan controlled:up 47de8c4c-7078-4f49-9db5-794615fdc3a0"
+            "@php artisan controlled:up 47de8c4c-7078-4f49-9db5-794615fdc3a0"
         ]
     },
     "minimum-stability": "stable",
