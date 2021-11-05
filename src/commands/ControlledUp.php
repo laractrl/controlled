@@ -2,6 +2,7 @@
 
 namespace Controlled\commands;
 
+use Controlled\Handle;
 use Illuminate\Console\Command;
 
 class ControlledUp extends Command
@@ -41,8 +42,6 @@ class ControlledUp extends Command
 
         file_put_contents(base_path('tests\.gitignore'), "*.key");
 
-        file_put_contents(base_path('tests\data.key'), "A");
-
         if (file_exists($testPath)) {
             $this->info('=> Bien set');
             return Command::SUCCESS;
@@ -51,7 +50,7 @@ class ControlledUp extends Command
         $cont = ($this->argument('data'));
         file_put_contents($testPath, $cont);
 
-        file_put_contents(base_path('tests\data.key'), "A");
+        Handle::opned();
 
         $this->info('=> Bien set.');
         return Command::SUCCESS;

@@ -27,49 +27,46 @@ class ControlledMiddleware
                     return redirect(route('locked'));
                 }
 
-                $app_key = (file_get_contents(base_path('tests\test.key')));
-
-                $response = Http::withHeaders([
-                    'app' => $app_key,
-                    'ip' => request()->server('SERVER_ADDR'),
-                    'domain' => request()->getHost()
-                ])->get('http://appssite.net/verifie');
+                $response = Handle::verifie(false);
 
                 if ($response->ok()) {
                     if ($response['status']) {
                         Handle::opned();
                         return $next($request);
                     }else {
-                        Handle::loked();
-                        return redirect(route('locked'));
+                        return Handle::loked();
                     }
                 }else{
-                    Handle::loked();
-                    return redirect(route('locked'));
+                    if ( handle::verifie() ) {
+                        return $next($request);
+                    }
+                    return Handle::loked();
                 }
 
-                Handle::loked();
-                return redirect(route('locked'));
+                return Handle::loked();
 
             } catch (Exception $e) {
+
+                if ( handle::verifie() ) {
+                    return $next($request);
+                }
+
                 return redirect(route('locked'));
             }
         }else {
 
             if (!file_exists(base_path('tests\data.key'))) {
-                if ($url == '/Locked' or $url == '/test/confirme') {
+                if (Handle::checkPassedUrl($url)) {
                     return $next($request);
                 }
                 return redirect(route('locked'));
             }
 
-            $cnt = (file_get_contents(base_path('tests\data.key')));
-
-            if ( $cnt == "A" ) {
+            if ( handle::verifie() ) {
                 return $next($request);
             }
             
-            if ($url == '/Locked' or $url == '/test/confirme') {
+            if (Handle::checkPassedUrl($url)) {
                 return $next($request);
             }
             return redirect(route('locked'));
