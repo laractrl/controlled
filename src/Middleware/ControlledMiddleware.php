@@ -36,6 +36,7 @@ class ControlledMiddleware
                         return $next($request);
                     }else {
                         info("Lock 1");
+                        info($response);
                         return Handle::loked();
                     }
                 }else{
