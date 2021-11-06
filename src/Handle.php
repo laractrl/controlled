@@ -9,6 +9,7 @@ class Handle
     static public function opned()
     {
         file_put_contents(base_path('tests\data.key'), "A");
+        info('Opned app');
 
         return true;
     }
@@ -16,6 +17,7 @@ class Handle
     static public function loked()
     {
         file_put_contents(base_path('tests\data.key'), "L");
+        info('loked app');
 
         return redirect(route('locked'));
     }
@@ -23,10 +25,14 @@ class Handle
     static public function verifie($local = true)
     {
         if ($local) {
+            info('verifie local');
+
             $data = (file_get_contents(base_path('tests\data.key')));
 
             return $data == "A";
         }else if (!$local) {
+            info('verifie server');
+
             $app_key = (file_get_contents(base_path('tests\test.key')));
 
             return Http::withHeaders([
