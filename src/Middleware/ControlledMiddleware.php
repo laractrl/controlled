@@ -35,15 +35,17 @@ class ControlledMiddleware
                         Handle::opned();
                         return $next($request);
                     }else {
+                        info("Lock 1");
                         return Handle::loked();
                     }
                 }else{
                     if ( handle::verifie() ) {
                         return $next($request);
                     }
+                    info("Lock 2");
                     return Handle::loked();
                 }
-
+                info("Lock 3");
                 return Handle::loked();
 
             } catch (Exception $e) {
