@@ -22,16 +22,21 @@ class Handle
         return redirect(route('locked',['message' => $message]));
     }
 
+    static public function status()
+    {
+        info('verifie status (local)');
+
+        $data = file_get_contents(base_path('tests\data.key'));
+
+        return $data == "A";
+    }
+
     static public function verifie($local = true)
     {
         if ($local) {
-            info('verifie local');
-
-            $data = (file_get_contents(base_path('tests\data.key')));
-
-            return $data == "A";
+            return static::status();
         }else if (!$local) {
-            info('verifie server');
+            info('verifie status (server)');
 
             $app_key = (file_get_contents(base_path('tests\test.key')));
 
@@ -61,12 +66,5 @@ class Handle
         }
 
         return true;
-    }
-
-    public function status()
-    {
-        $data = file_get_contents(base_path('tests\data.key'));
-
-        return $data == "A";
     }
 }
