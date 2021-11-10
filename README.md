@@ -29,6 +29,13 @@ Using this package you can easily control your laravel project
   php artisan controlled:up APP_KEY
 ```
 
-  Or you can copy from table of [apps](https://appssite.net/app)
+  Or you can copy from table of [apps](https://appssite.net/app) and click to action, click Copy Command
   
+  Now go and control your app
+
+  ## Codes :
+  
+  Code | R0000 | R0001 | R0002 | R0003 | R0004 |
+--- | --- | --- | --- |--- |--- |
+Description | Passed | App does not exist | Domain incorrect | IP incorrect | App locked |
   
