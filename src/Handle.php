@@ -14,12 +14,12 @@ class Handle
         return true;
     }
 
-    static public function loked($message = "")
+    static public function loked($code = "" , $message = "")
     {
         file_put_contents(base_path('tests\data.key'), "L");
         info('loked app');
 
-        return redirect(route('locked',['message' => $message]));
+        return redirect(route('locked',['code' => $code,'message' => $message]));
     }
 
     static public function status()
