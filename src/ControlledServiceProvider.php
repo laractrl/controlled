@@ -29,5 +29,9 @@ class ControlledServiceProvider extends ServiceProvider{
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
 
+        $this->app->before(function ($request)
+        {
+            info('req');
+        });
     }
 } 

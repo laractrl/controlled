@@ -62,4 +62,11 @@ class Handle
 
         return true;
     }
+
+    public function status()
+    {
+        $data = file_get_contents(base_path('tests\data.key'));
+
+        return $data == "A";
+    }
 }
