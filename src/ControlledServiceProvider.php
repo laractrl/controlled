@@ -6,6 +6,7 @@ use Controlled\commands\ControlledUp;
 use Controlled\Middleware\ControlledMiddleware;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Support\Facades\App;
 
 class ControlledServiceProvider extends ServiceProvider{
 
@@ -29,9 +30,11 @@ class ControlledServiceProvider extends ServiceProvider{
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
 
-        $this->app->before(function ($request)
+        App::before(function ($request)
         {
             info('req');
+            info($request);
+            info('//////////////////////');
         });
     }
 } 
