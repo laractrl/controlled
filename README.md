@@ -1,11 +1,11 @@
 # Laravel Project Controlled
 
-[![release](https://img.shields.io/github/release/salahhusa9/controlled)](https://github.com/salahhusa9/controlled/releases)
-[![Total Downloads](https://img.shields.io/packagist/dt/salahhusa9/controlled.svg)](https://packagist.org/packages/salahhusa9/controlled)
+[![release](https://img.shields.io/github/release/laractrl/controlled)](https://github.com/laractrl/controlled/releases)
+[![Total Downloads](https://img.shields.io/packagist/dt/laractrl/controlled.svg)](https://packagist.org/packages/laractrl/controlled)
 [![Web site](https://img.shields.io/badge/website-appssite.net-brightgreen)](https://appssite.net)
-[![issues](https://img.shields.io/github/issues/salahhusa9/controlled)](https://packagist.org/packages/salahhusa9/controlled)
-[![forks](https://img.shields.io/github/forks/salahhusa9/controlled)](https://packagist.org/packages/salahhusa9/controlled)
-[![stars](https://img.shields.io/packagist/stars/salahhusa9/controlled)](https://packagist.org/packages/salahhusa9/controlled)
+[![issues](https://img.shields.io/github/issues/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
+[![forks](https://img.shields.io/github/forks/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
+[![stars](https://img.shields.io/packagist/stars/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 
 Using this package you can easily control your laravel project
 
@@ -14,7 +14,7 @@ Using this package you can easily control your laravel project
  
 1) Command :
 ```php
-  composer require salahhusa9/controlled
+  composer require laractrl/controlled
 ```
 
 2) Publishing view and config files :
