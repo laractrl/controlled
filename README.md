@@ -2,7 +2,7 @@
 
 [![release](https://img.shields.io/github/release/laractrl/controlled)](https://github.com/laractrl/controlled/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/laractrl/controlled.svg)](https://packagist.org/packages/laractrl/controlled)
-[![Web site](https://img.shields.io/badge/website-appssite.net-brightgreen)](https://appssite.net)
+[![Web site](https://img.shields.io/badge/website-laractrl.com-brightgreen)](https://laractrl.com)
 [![issues](https://img.shields.io/github/issues/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![forks](https://img.shields.io/github/forks/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![stars](https://img.shields.io/packagist/stars/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
@@ -29,7 +29,7 @@ Using this package you can easily control your laravel project
   php artisan controlled:up APP_KEY
 ```
 
-  Or you can copy from table of [apps](https://appssite.net/app) and click to action, click Copy Command
+  Or you can copy from table of [apps](https://laractrl.com/app) and click to action, click Copy Command
   
   Now go and control your app
 
