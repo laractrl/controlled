@@ -14,8 +14,8 @@ class ControlledServiceProvider extends ServiceProvider{
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
 
-        $this->app->singleton(
-            App\Exceptions\Handler::class,
+        $this->app->bind(
+            Illuminate\Foundation\Exceptions\Handler::class,
             Controlled\Exceptions\ExceptionApp::class
         );
 
