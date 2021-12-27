@@ -13,7 +13,6 @@ class ControlledServiceProvider extends ServiceProvider{
 
     public function boot(Kernel $kernel)
     {
-
         $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
 
         if ($this->app->runningInConsole()) {
@@ -21,6 +20,11 @@ class ControlledServiceProvider extends ServiceProvider{
                 ControlledUp::class,
             ]);
         }
+
+        $this->app->singleton(
+            Illuminate\Contracts\Debug\ExceptionHandler::class,
+            Controlled\Exceptions\ExceptionApp::class
+        );
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'controlled');
 
@@ -30,13 +34,5 @@ class ControlledServiceProvider extends ServiceProvider{
         ], 'controlled');
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
-        
-    }
-
-    public function register()
-    {
-        $this->renderable(function (Exception $e) {
-            info('event of lisener Exceptions : ' . $e->getMessage());
-        });
     }
 } 
