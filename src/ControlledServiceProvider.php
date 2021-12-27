@@ -4,7 +4,6 @@ namespace Controlled;
 
 use Controlled\commands\ControlledUp;
 use Controlled\Middleware\ControlledMiddleware;
-use Exception;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\App;
@@ -15,16 +14,16 @@ class ControlledServiceProvider extends ServiceProvider{
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
 
+        $this->app->singleton(
+            App\Exceptions\Handler::class,
+            Controlled\Exceptions\ExceptionApp::class
+        );
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ControlledUp::class,
             ]);
         }
-
-        $this->app->singleton(
-            Illuminate\Contracts\Debug\ExceptionHandler::class,
-            Controlled\Exceptions\ExceptionApp::class
-        );
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'controlled');
 

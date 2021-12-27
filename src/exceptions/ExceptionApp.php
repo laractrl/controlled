@@ -2,12 +2,15 @@
 
 namespace Controlled\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\Handler;
 use Throwable;
 
-class ExceptionApp extends ExceptionHandler{
+class ExceptionApp extends Handler
+{
     public function register()
     {
+        parent::register();
+
         $this->reportable(function (Throwable $e) {
             info('event of lisener Exceptions : ' . $e->getMessage());
         });
