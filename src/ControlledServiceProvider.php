@@ -4,6 +4,7 @@ namespace Controlled;
 
 use Controlled\commands\ControlledUp;
 use Controlled\Middleware\ControlledMiddleware;
+use Exception;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\App;
@@ -30,5 +31,12 @@ class ControlledServiceProvider extends ServiceProvider{
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
         
+    }
+
+    public function register()
+    {
+        $this->renderable(function (Exception $e) {
+            info('event of lisener Exceptions : ' . $e->getMessage());
+        });
     }
 } 
