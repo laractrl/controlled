@@ -25,7 +25,7 @@ class ControlledMiddleware
             return Handle::loked();
         }
 
-        if (in_array( $url , config('controlled.urls') ) or $url == "/login") {
+        if (in_array( $url , config('controlled.urls',[]) ) or $url == "/login") {
             try{
 
                 $response = Handle::verifie(false);
