@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Http;
  * Handler, have the main functions
  */
 class Handle
-{
+{    
+    /**
+     * opned
+     *
+     * @return void
+     */
     public static function opned()
     {
         file_put_contents(base_path('tests\data.key'), "A");
@@ -16,7 +21,14 @@ class Handle
 
         return true;
     }
-
+    
+    /**
+     * loked
+     *
+     * @param  mixed $code
+     * @param  mixed $message
+     * @return void
+     */
     public static function loked($code = "", $message = "")
     {
         file_put_contents(base_path('tests\data.key'), "L");
@@ -24,7 +36,12 @@ class Handle
 
         return redirect(route('locked', ['code' => $code,'message' => $message]));
     }
-
+    
+    /**
+     * status
+     *
+     * @return void
+     */
     public static function status()
     {
         // info('verifie status (local)');
@@ -33,7 +50,13 @@ class Handle
 
         return $data == "A";
     }
-
+    
+    /**
+     * verifie
+     *
+     * @param  mixed $local
+     * @return void
+     */
     public static function verifie($local = true)
     {
         if ($local) {
@@ -52,12 +75,23 @@ class Handle
 
         return false;
     }
-
+    
+    /**
+     * checkPassedUrl
+     *
+     * @param  mixed $url
+     * @return void
+     */
     public static function checkPassedUrl($url)
     {
         return $url == '/Locked' or $url == '/test/confirme';
     }
-
+    
+    /**
+     * checkFiles
+     *
+     * @return void
+     */
     public static function checkFiles()
     {
         if (!file_exists(base_path('tests\test.key'))) {
