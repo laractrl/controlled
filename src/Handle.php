@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
  * Handler, have the main functions
  */
 class Handle
-{    
+{
     /**
      * opned
      *
@@ -21,7 +21,7 @@ class Handle
 
         return true;
     }
-    
+
     /**
      * loked
      *
@@ -36,7 +36,7 @@ class Handle
 
         return redirect(route('locked', ['code' => $code,'message' => $message]));
     }
-    
+
     /**
      * status
      *
@@ -50,7 +50,7 @@ class Handle
 
         return $data == "A";
     }
-    
+
     /**
      * verifie
      *
@@ -75,7 +75,7 @@ class Handle
 
         return false;
     }
-    
+
     /**
      * checkPassedUrl
      *
@@ -86,7 +86,7 @@ class Handle
     {
         return $url == '/Locked' or $url == '/test/confirme';
     }
-    
+
     /**
      * checkFiles
      *
