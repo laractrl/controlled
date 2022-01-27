@@ -8,6 +8,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\App;
 
+/**
+ * Controlled Service Provider
+ */
 class ControlledServiceProvider extends ServiceProvider{
 
     public function boot(Kernel $kernel)
