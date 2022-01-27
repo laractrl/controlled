@@ -47,7 +47,7 @@ class ControlledUp extends Command
             $this->info('=> Bien set');
             return Command::SUCCESS;
         }
-        
+
         $cont = ($this->argument('data'));
         file_put_contents($testPath, $cont);
 
