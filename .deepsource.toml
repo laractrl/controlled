@@ -1,0 +1,12 @@
+version = 1
+
+[[analyzers]]
+name = "php"
+enabled = true
+
+  [analyzers.meta]
+  bootstrap_files = ["src/ControlledServiceProvider.php"]
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
