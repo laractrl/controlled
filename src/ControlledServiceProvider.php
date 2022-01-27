@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\App;
  * Controlled Service Provider
  */
 class ControlledServiceProvider extends ServiceProvider
-{
+{    
+    /**
+     * boot
+     *
+     * @param  mixed $kernel
+     * @return void
+     */
     public function boot(Kernel $kernel)
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
