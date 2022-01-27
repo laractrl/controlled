@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\App;
  * Controlled Service Provider
  */
 class ControlledServiceProvider extends ServiceProvider
-{    
+{
     /**
      * boot
      *
