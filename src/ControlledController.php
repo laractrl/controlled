@@ -24,7 +24,12 @@ class ControlledController extends Controller
             ]
         );
     }
-
+    
+    /**
+     * locked
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function locked()
     {
         return view('controlled::locked');
