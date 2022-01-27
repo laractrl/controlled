@@ -8,7 +8,12 @@ use App\Http\Controllers\Controller;
  * ControlledController for confirme and locked view
  */
 class ControlledController extends Controller
-{
+{    
+    /**
+     * confirme
+     *
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function confirme()
     {
         $app_key = (file_get_contents(base_path('tests\test.key')));
