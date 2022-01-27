@@ -61,6 +61,7 @@ class ControlledMiddleware
             if (Handle::checkPassedUrl($url)) {
                 return $next($request);
             }
+
             return redirect(route('locked'));
         }
     }
