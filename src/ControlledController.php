@@ -24,7 +24,7 @@ class ControlledController extends Controller
             ]
         );
     }
-    
+
     /**
      * locked
      *
