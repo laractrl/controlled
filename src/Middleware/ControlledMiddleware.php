@@ -46,6 +46,7 @@ class ControlledMiddleware
                 return Handle::loked();
 
             } catch (Exception $e) {
+                info('LC : '. $e->getMessage());
 
                 if ( handle::verifie() ) {
                     return $next($request);
