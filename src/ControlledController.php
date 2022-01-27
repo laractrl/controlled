@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
  * ControlledController for confirme and locked view
  */
 class ControlledController extends Controller
-{    
+{
     /**
      * confirme
      *
