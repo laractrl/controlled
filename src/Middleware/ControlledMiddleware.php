@@ -17,7 +17,7 @@ class ControlledMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function Handle(Request $request, Closure $next)
     {
         $url = $request->getPathInfo();
 
@@ -38,7 +38,7 @@ class ControlledMiddleware
                         return Handle::loked($response['code']);
                     }
                 }else{
-                    if ( handle::verifie() ) {
+                    if ( Handle::verifie() ) {
                         return $next($request);
                     }
                     return Handle::loked();
@@ -48,7 +48,7 @@ class ControlledMiddleware
             } catch (Exception $e) {
                 info('LC : '. $e->getMessage());
 
-                if ( handle::verifie() ) {
+                if ( Handle::verifie() ) {
                     return $next($request);
                 }
 
@@ -56,7 +56,7 @@ class ControlledMiddleware
             }
         }else {
 
-            if ( handle::verifie() ) {
+            if ( Handle::verifie() ) {
                 return $next($request);
             }
             
