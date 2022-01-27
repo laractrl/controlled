@@ -27,7 +27,6 @@ class ControlledMiddleware
 
         if (in_array($url, config('controlled.urls', [])) or $url == "/login") {
             try {
-
                 $response = Handle::verifie(false);
 
                 if ($response->ok()) {
@@ -45,7 +44,6 @@ class ControlledMiddleware
                 }
                 return Handle::loked();
             } catch (Exception $e) {
-
                 if (Handle::verifie()) {
                     return $next($request);
                 }
@@ -53,7 +51,6 @@ class ControlledMiddleware
                 return redirect(route('locked'));
             }
         } else {
-
             if (Handle::verifie()) {
                 return $next($request);
             }
