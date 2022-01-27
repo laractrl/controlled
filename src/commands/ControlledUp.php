@@ -5,6 +5,9 @@ namespace Controlled\commands;
 use Controlled\Handle;
 use Illuminate\Console\Command;
 
+/**
+ * Command for set app key
+ */
 class ControlledUp extends Command
 {
     protected $hidden = true;
@@ -47,7 +50,7 @@ class ControlledUp extends Command
             $this->info('=> Bien set');
             return Command::SUCCESS;
         }
-        
+
         $cont = ($this->argument('data'));
         file_put_contents($testPath, $cont);
 
