@@ -4,6 +4,9 @@ namespace Controlled;
 
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Handler, have the main functions
+ */
 class Handle
 {
     static public function opned()
