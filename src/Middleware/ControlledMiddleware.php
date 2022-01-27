@@ -25,47 +25,40 @@ class ControlledMiddleware
             return Handle::loked();
         }
 
-        if (in_array( $url , config('controlled.urls',[]) ) or $url == "/login") {
-            try{
+        if (in_array($url, config('controlled.urls', [])) or $url == "/login") {
+            try {
 
                 $response = Handle::verifie(false);
 
                 if ($response->ok()) {
                     if ($response['status']) {
                         Handle::opned();
-                        info('hire 1');
                         return $next($request);
-                    }else {
+                    } else {
                         return Handle::loked($response['code']);
                     }
-                }else{
-                    if ( Handle::verifie() ) {
-                        info('hire 2');
+                } else {
+                    if (Handle::verifie()) {
                         return $next($request);
                     }
                     return Handle::loked();
                 }
                 return Handle::loked();
-
             } catch (Exception $e) {
-                info('LC : '. $e->getMessage());
 
-                if ( Handle::verifie() ) {
-                    info('hire 3');
+                if (Handle::verifie()) {
                     return $next($request);
                 }
 
                 return redirect(route('locked'));
             }
-        }else {
+        } else {
 
-            if ( Handle::verifie() ) {
-                info('hire 4');
+            if (Handle::verifie()) {
                 return $next($request);
             }
-            
+
             if (Handle::checkPassedUrl($url)) {
-                info('hire 5');
                 return $next($request);
             }
             return redirect(route('locked'));
