@@ -33,12 +33,14 @@ class ControlledMiddleware
                 if ($response->ok()) {
                     if ($response['status']) {
                         Handle::opned();
+                        info('hire 1');
                         return $next($request);
                     }else {
                         return Handle::loked($response['code']);
                     }
                 }else{
                     if ( Handle::verifie() ) {
+                        info('hire 2');
                         return $next($request);
                     }
                     return Handle::loked();
@@ -49,6 +51,7 @@ class ControlledMiddleware
                 info('LC : '. $e->getMessage());
 
                 if ( Handle::verifie() ) {
+                    info('hire 3');
                     return $next($request);
                 }
 
@@ -57,10 +60,12 @@ class ControlledMiddleware
         }else {
 
             if ( Handle::verifie() ) {
+                info('hire 4');
                 return $next($request);
             }
             
             if (Handle::checkPassedUrl($url)) {
+                info('hire 5');
                 return $next($request);
             }
             return redirect(route('locked'));
