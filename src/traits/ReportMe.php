@@ -1,10 +1,12 @@
 <?php
+
 namespace Controlled\traits;
 
 use Throwable;
 
-trait ReportMe {
-    function report(Throwable $exception)
+trait ReportMe
+{
+    public function report(Throwable $exception)
     {
         info('ReportMeTest');
 
