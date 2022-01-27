@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\App;
 /**
  * Controlled Service Provider
  */
-class ControlledServiceProvider extends ServiceProvider{
-
+class ControlledServiceProvider extends ServiceProvider
+{
     public function boot(Kernel $kernel)
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
@@ -32,4 +32,4 @@ class ControlledServiceProvider extends ServiceProvider{
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
     }
-} 
+}
