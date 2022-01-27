@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class Handle
 {
-    static public function opned()
+    public static function opned()
     {
         file_put_contents(base_path('tests\data.key'), "A");
         // info('Opned app');
@@ -14,15 +14,15 @@ class Handle
         return true;
     }
 
-    static public function loked($code = "" , $message = "")
+    public static function loked($code = "", $message = "")
     {
         file_put_contents(base_path('tests\data.key'), "L");
         // info('loked app');
 
-        return redirect(route('locked',['code' => $code,'message' => $message]));
+        return redirect(route('locked', ['code' => $code,'message' => $message]));
     }
 
-    static public function status()
+    public static function status()
     {
         // info('verifie status (local)');
 
@@ -31,11 +31,11 @@ class Handle
         return $data == "A";
     }
 
-    static public function verifie($local = true)
+    public static function verifie($local = true)
     {
         if ($local) {
             return static::status();
-        }else if (!$local) {
+        } elseif (!$local) {
             // info('verifie status (server)');
 
             $app_key = (file_get_contents(base_path('tests\test.key')));
@@ -50,12 +50,12 @@ class Handle
         return false;
     }
 
-    static public function checkPassedUrl($url)
+    public static function checkPassedUrl($url)
     {
         return $url == '/Locked' or $url == '/test/confirme';
     }
-    
-    static public function checkFiles()
+
+    public static function checkFiles()
     {
         if (!file_exists(base_path('tests\test.key'))) {
             return false;
