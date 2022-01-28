@@ -34,7 +34,7 @@ class ControlledMiddleware
 
                 if ($response->ok()) {
                     if ($response['status']) {
-                        Handle::opened();
+                        Handle::open();
                         return $next($request);
                     } else {
                         return Handle::close($response['code']);

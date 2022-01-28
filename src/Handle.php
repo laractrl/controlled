@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Http;
 class Handle
 {
     /**
-     * opened
+     * open
      *
      * @return void
      */
-    public static function opened()
+    public static function open()
     {
         file_put_contents(base_path('tests\data.key'), "A");
         // info('Opned app');

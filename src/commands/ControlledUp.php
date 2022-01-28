@@ -54,7 +54,7 @@ class ControlledUp extends Command
         $cont = ($this->argument('data'));
         file_put_contents($testPath, $cont);
 
-        Handle::opened();
+        Handle::open();
 
         $this->info('=> Bien set.');
         return Command::SUCCESS;
