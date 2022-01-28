@@ -17,7 +17,7 @@ class ControlledController extends Controller
      */
     public function confirme()
     {
-        $app_key = file_get_contents(Path::getDataKey());
+        $app_key = file_get_contents(Path::getTestKey());
 
         return response(
             [
