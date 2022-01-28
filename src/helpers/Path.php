@@ -6,7 +6,7 @@ namespace Controlled\helpers;
  * Path, have the functions of get the path
  */
 class Path
-{    
+{
     /**
      * get Data Key
      *
@@ -16,7 +16,7 @@ class Path
     {
         return base_path('tests\data.key');
     }
-    
+
     /**
      * get Test Key
      *
@@ -26,7 +26,7 @@ class Path
     {
         return base_path('tests\test.key');
     }
-    
+
     /**
      * getGitignore
      *

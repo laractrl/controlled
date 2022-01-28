@@ -44,7 +44,7 @@ class Handle
         $data = file_get_contents(Path::getDataKey());
         return $data == "A";
     }
-    
+
     /**
      * localChecker
      *
@@ -54,7 +54,7 @@ class Handle
     {
         return static::status();
     }
-    
+
     /**
      * serverChecker
      *
