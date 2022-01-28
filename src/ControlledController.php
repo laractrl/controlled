@@ -31,11 +31,11 @@ class ControlledController extends Controller
     }
 
     /**
-     * locked
+     * close
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function locked()
+    public function close()
     {
         return view('controlled::locked');
     }
