@@ -23,16 +23,16 @@ class Handle
     }
 
     /**
-     * loked
+     * close
      *
      * @param  mixed $code
      * @param  mixed $message
      * @return void
      */
-    public static function loked($code = "", $message = "")
+    public static function close($code = "", $message = "")
     {
         file_put_contents(base_path('tests\data.key'), "L");
-        // info('loked app');
+        // info('close app');
 
         return redirect(route('locked', ['code' => $code,'message' => $message]));
     }

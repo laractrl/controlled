@@ -25,7 +25,7 @@ class ControlledMiddleware
         $url = $request->getPathInfo();
 
         if (!Handle::checkFiles()) {
-            return Handle::loked();
+            return Handle::close();
         }
 
         if (in_array($url, config('controlled.urls', [])) or $url == "/login") {
@@ -37,15 +37,15 @@ class ControlledMiddleware
                         Handle::opened();
                         return $next($request);
                     } else {
-                        return Handle::loked($response['code']);
+                        return Handle::close($response['code']);
                     }
                 } else {
                     if (Handle::verifie()) {
                         return $next($request);
                     }
-                    return Handle::loked();
+                    return Handle::close();
                 }
-                return Handle::loked();
+                return Handle::close();
             } catch (Exception $e) {
                 if (Handle::verifie()) {
                     return $next($request);
