@@ -62,7 +62,7 @@ class Handle
      */
     public static function serverChecker()
     {
-        $app_key = file_get_contents(Path::getDataKey());
+        $app_key = file_get_contents(Path::getTestKey());
 
         return Http::withHeaders([
             'app' => $app_key,
