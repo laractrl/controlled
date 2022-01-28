@@ -3,6 +3,7 @@
 namespace Controlled;
 
 use App\Http\Controllers\Controller;
+use Controlled\helpers\Path;
 
 /**
  * ControlledController for confirme and locked view
@@ -16,7 +17,8 @@ class ControlledController extends Controller
      */
     public function confirme()
     {
-        $app_key = (file_get_contents(base_path('tests\test.key')));
+        $app_key = file_get_contents(Path::getDataKey());
+
         return response(
             [
                 'contant' => 'in confirmation',

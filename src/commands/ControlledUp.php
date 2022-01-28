@@ -3,6 +3,7 @@
 namespace Controlled\commands;
 
 use Controlled\Handle;
+use Controlled\helpers\Path;
 use Illuminate\Console\Command;
 
 /**
@@ -42,9 +43,9 @@ class ControlledUp extends Command
      */
     public function handle()
     {
-        $testPath = base_path('tests\test.key');
+        $testPath = Path::getDataKey();
 
-        file_put_contents(base_path('tests\.gitignore'), "*.key");
+        file_put_contents(Path::getGitignore(), "*.key");
 
         if (file_exists($testPath)) {
             $this->info('=> Bien set');

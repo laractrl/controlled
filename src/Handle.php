@@ -2,6 +2,7 @@
 
 namespace Controlled;
 
+use Controlled\helpers\Path;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -12,75 +13,69 @@ class Handle
     /**
      * open
      *
-     * @return void
+     * @return boolean
      */
     public static function open()
     {
-        file_put_contents(base_path('tests\data.key'), "A");
-        // info('Opned app');
-
+        file_put_contents(Path::getDataKey(), "A");
         return true;
     }
 
     /**
      * close
      *
-     * @param  mixed $code
-     * @param  mixed $message
-     * @return void
+     * @param  string $code
+     * @param  string $message
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public static function close($code = "", $message = "")
     {
-        file_put_contents(base_path('tests\data.key'), "L");
-        // info('close app');
-
-        return redirect(route('locked', ['code' => $code,'message' => $message]));
+        file_put_contents(Path::getDataKey(), "L");
+        return redirect(route('locked', ['code' => $code, 'message' => $message]));
     }
 
     /**
      * status
      *
-     * @return void
+     * @return boolean
      */
     public static function status()
     {
-        // info('verifie status (local)');
-
-        $data = file_get_contents(base_path('tests\data.key'));
-
+        $data = file_get_contents(Path::getDataKey());
         return $data == "A";
     }
-
+    
     /**
-     * verifie
+     * localChecker
      *
-     * @param  mixed $local
-     * @return void
+     * @return boolean
      */
-    public static function verifie($local = true)
+    public static function localChecker()
     {
-        if ($local) {
-            return static::status();
-        } elseif (!$local) {
-            // info('verifie status (server)');
+        return static::status();
+    }
+    
+    /**
+     * serverChecker
+     *
+     * @return \Illuminate\Http\Client\Response
+     */
+    public static function serverChecker()
+    {
+        $app_key = file_get_contents(Path::getDataKey());
 
-            $app_key = (file_get_contents(base_path('tests\test.key')));
-
-            return Http::withHeaders([
-                'app' => $app_key,
-                'ip' => request()->server('SERVER_ADDR'),
-                'domain' => request()->getHost()
-            ])->get('https://laractrl.com/api/v1/verifie');
-        }
-
-        return false;
+        return Http::withHeaders([
+            'app' => $app_key,
+            'ip' => request()->server('SERVER_ADDR'),
+            'domain' => request()->getHost()
+        ])->get('https://laractrl.com/api/v1/verifie');
     }
 
     /**
      * checkPassedUrl
      *
      * @param  mixed $url
-     * @return void
+     * @return boolean
      */
     public static function checkPassedUrl($url)
     {
@@ -90,15 +85,15 @@ class Handle
     /**
      * checkFiles
      *
-     * @return void
+     * @return boolean
      */
     public static function checkFiles()
     {
-        if (!file_exists(base_path('tests\test.key'))) {
+        if (!file_exists(Path::getDataKey())) {
             return false;
         }
 
-        if (!file_exists(base_path('tests\data.key'))) {
+        if (!file_exists(Path::getDataKey())) {
             return false;
         }
 

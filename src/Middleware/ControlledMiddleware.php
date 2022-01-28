@@ -30,7 +30,7 @@ class ControlledMiddleware
 
         if (in_array($url, config('controlled.urls', [])) or $url == "/login") {
             try {
-                $response = Handle::verifie(false);
+                $response = Handle::serverChecker();
 
                 if ($response->ok()) {
                     if ($response['status']) {
@@ -39,22 +39,20 @@ class ControlledMiddleware
                     } else {
                         return Handle::close($response['code']);
                     }
-                } else {
-                    if (Handle::verifie()) {
-                        return $next($request);
-                    }
-                    return Handle::close();
+                } elseif (Handle::localChecker()) {
+                    return $next($request);
                 }
+
                 return Handle::close();
             } catch (Exception $e) {
-                if (Handle::verifie()) {
+                if (Handle::localChecker()) {
                     return $next($request);
                 }
 
                 return redirect(route('locked'));
             }
         } else {
-            if (Handle::verifie()) {
+            if (Handle::localChecker()) {
                 return $next($request);
             }
 
