@@ -3,9 +3,10 @@
 namespace Controlled;
 
 use App\Http\Controllers\Controller;
+use Controlled\helpers\Path;
 
 /**
- * ControlledController for confirme and locked view
+ * ControlledController for confirme and closed view
  */
 class ControlledController extends Controller
 {
@@ -16,7 +17,8 @@ class ControlledController extends Controller
      */
     public function confirme()
     {
-        $app_key = (file_get_contents(base_path('tests\test.key')));
+        $app_key = file_get_contents(Path::getTestKey());
+
         return response(
             [
                 'contant' => 'in confirmation',
@@ -31,12 +33,12 @@ class ControlledController extends Controller
     }
 
     /**
-     * close
+     * closed
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function close()
+    public function closed()
     {
-        return view('controlled::locked');
+        return view('controlled::closed');
     }
 }
