@@ -31,7 +31,7 @@ class Handle
     public static function close($code = "", $message = "")
     {
         file_put_contents(Path::getDataKey(), "L");
-        return redirect(route('locked', ['code' => $code, 'message' => $message]));
+        return redirect(route('closed', ['code' => $code, 'message' => $message]));
     }
 
     /**
@@ -79,7 +79,7 @@ class Handle
      */
     public static function checkPassedUrl($url)
     {
-        return $url == '/Locked' or $url == '/test/confirme';
+        return $url == '/closed' or $url == '/test/confirme';
     }
 
     /**

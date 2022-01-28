@@ -49,7 +49,7 @@ class ControlledMiddleware
                     return $next($request);
                 }
 
-                return redirect(route('locked'));
+                return redirect(route('closed'));
             }
         } else {
             if (Handle::localChecker()) {
@@ -60,7 +60,7 @@ class ControlledMiddleware
                 return $next($request);
             }
 
-            return redirect(route('locked'));
+            return redirect(route('closed'));
         }
     }
 }

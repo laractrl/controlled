@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Controlled\helpers\Path;
 
 /**
- * ControlledController for confirme and locked view
+ * ControlledController for confirme and closed view
  */
 class ControlledController extends Controller
 {
@@ -33,12 +33,12 @@ class ControlledController extends Controller
     }
 
     /**
-     * close
+     * closed
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function close()
+    public function closed()
     {
-        return view('controlled::locked');
+        return view('controlled::closed');
     }
 }
