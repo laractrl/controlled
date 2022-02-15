@@ -26,7 +26,7 @@
     "autoload": {
         "psr-4": {
             "Controlled\\": "src/",
-            "Controlled\\tests": "tests/"
+            "Controlled\\tests\\": "tests/"
         }
     },
     "license": "MIT",
