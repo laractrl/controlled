@@ -23,12 +23,13 @@ jobs:
           port: ${{ secrets.SERVER_PORT_MVC }}
           envs: PATH,ENV_CONT
           script: |
-            rm -rf $PATH
-            cd $PATH
-            git@github.com:salahhusa9/app-test.test.git ./
-            composer install
-            echo ENV_CONT > .env
-            mkdir -p storage/{app,public,framework,logs}
-            mkdir -p storage/framework/{cache,sessions,testing,views}
-            chmod -R 0777 storage
-            vendor/bin/phpunit vendor/laractrl/controlled/
+            echo "done !!"
+            # rm -rf $PATH
+            # cd $PATH
+            # git@github.com:salahhusa9/app-test.test.git ./
+            # composer install
+            # echo ENV_CONT > .env
+            # mkdir -p storage/{app,public,framework,logs}
+            # mkdir -p storage/framework/{cache,sessions,testing,views}
+            # chmod -R 0777 storage
+            # vendor/bin/phpunit vendor/laractrl/controlled/
