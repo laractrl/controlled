@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlled\Tests;
+namespace Controlled\tests;
 
 use Controlled\ControlledServiceProvider;
 
