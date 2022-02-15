@@ -1,6 +1,6 @@
 <?php
 
-namespace Laractrl\Controlled\Tests;
+namespace Controlled\Tests;
 
 use Controlled\ControlledServiceProvider;
 

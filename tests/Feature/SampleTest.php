@@ -1,6 +1,6 @@
 <?php
 
-namespace Laractrl\Controlled\Tests\Feature;
+namespace Controlled\Tests\Feature;
 
 use Tests\TestCase;
 
