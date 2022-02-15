@@ -25,7 +25,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Controlled\\": "src/"
+            "Controlled\\": "src/",
+            "Laractrl\\Controlled\\Tests": "tests"
         }
     },
     "license": "MIT",
