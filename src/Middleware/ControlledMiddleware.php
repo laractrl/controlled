@@ -20,7 +20,7 @@ class ControlledMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next) : mixed
+    public function handle(Request $request, Closure $next): mixed
     {
         $url = $request->getPathInfo();
 
