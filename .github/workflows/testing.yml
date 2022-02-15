@@ -1,0 +1,37 @@
+name: Testing Package in Laravel Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-in-mcv-server:
+    name: Test in MVC Server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: app-build
+      - name: Clone Test App Repo in Server
+        uses: appleboy/ssh-action@master
+        env:
+          PATH: ${{ secrets.SERVER_PATH_MVC }}
+          ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
+        with:
+          host: ${{ secrets.SERVER_HOST_MVC }}
+          username: ${{ secrets.SERVER_USERNAME_MVC }}
+          password: ${{ secrets.SERVER_PASSWORD_MVC }}
+          port: ${{ secrets.SERVER_PORT_MVC }}
+          envs: PATH,ENV_CONT
+          script: |
+            rm -rf $PATH
+            cd $PATH
+            git@github.com:salahhusa9/app-test.test.git ./
+            composer install
+            echo ENV_CONT > .env
+            mkdir -p storage/{app,public,framework,logs}
+            mkdir -p storage/framework/{cache,sessions,testing,views}
+            chmod -R 0777 storage
+            vendor/bin/phpunit vendor/laractrl/controlled/
