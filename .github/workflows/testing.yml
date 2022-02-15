@@ -17,7 +17,7 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           PATH: ${{ secrets.SERVER_PATH_MVC }}
-          ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
+          # ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
         with:
           host: ${{ secrets.SERVER_HOST_MVC }}
           username: ${{ secrets.SERVER_USERNAME_MVC }}
@@ -26,3 +26,4 @@ jobs:
           # envs: PATH,ENV_CONT
           script: |
             echo "done !!"
+            ls
