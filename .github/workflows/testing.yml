@@ -22,5 +22,5 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD_MVC }}
           port: ${{ secrets.SERVER_PORT_MVC }}
           envs: PATH,ENV_CONT
-          script: |
-            echo "done !!"
+          # script: |
+          #   echo "done !!"
