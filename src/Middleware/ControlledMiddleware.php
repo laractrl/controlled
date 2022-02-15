@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Http;
 class ControlledMiddleware
 {
     /**
-     * Handle an incoming request.
+     * handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
      */
-    public function Handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         $url = $request->getPathInfo();
 
