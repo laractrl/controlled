@@ -18,8 +18,6 @@ jobs:
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
           ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
-          GITHUB_SHA: ${{ github.event.after }}
-          GITHUB_REF: ${{ github.head_ref }}
         with:
           host: ${{ secrets.SERVER_HOST_MVC }}
           username: ${{ secrets.SERVER_USERNAME_MVC }}
@@ -32,4 +30,5 @@ jobs:
             echo ${{ github.event.after }}
             echo "Brach sha is :"
             echo ${{ github.head_ref }}
-            echo '${{ toJSON(github) }}'
+            cd $PATH
+            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
