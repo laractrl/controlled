@@ -32,4 +32,4 @@ jobs:
             echo $GITHUB_SHA
             echo "Brach sha is :"
             echo $GITHUB_REF
-            ls
+            echo '${{ toJSON(github) }}'
