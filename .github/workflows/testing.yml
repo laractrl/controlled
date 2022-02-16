@@ -30,7 +30,7 @@ jobs:
             echo ${{ github.event.after }}
             echo "Brach sha is :"
             echo ${{ github.head_ref }}
-            rm -rf $PATH_CONT/.env
+            rm $PATH_CONT/.env
             rm -rf $PATH_CONT
             mkdir $PATH_CONT
             cd $PATH_CONT
