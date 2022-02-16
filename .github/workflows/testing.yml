@@ -18,8 +18,8 @@ jobs:
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
           ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_REF: ${{ github.ref }}
+          GITHUB_SHA: ${{ github.event.after }}
+          GITHUB_REF: ${{ github.head_ref }}
         with:
           host: ${{ secrets.SERVER_HOST_MVC }}
           username: ${{ secrets.SERVER_USERNAME_MVC }}
