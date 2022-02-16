@@ -52,5 +52,5 @@ jobs:
           envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
             cd $PATH_CONT
-            vendor/bin/phpunit
+            php artisan test
             vendor/bin/phpunit vendor/laractrl/controlled/
