@@ -87,7 +87,7 @@ jobs:
             chmod -R 777 storage bootstrap/cache
             composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
             php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
-      - name: Testing
+      - name: Testing (APS)
         uses: appleboy/ssh-action@master
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_APS }}
