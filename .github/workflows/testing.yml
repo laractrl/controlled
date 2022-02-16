@@ -40,7 +40,7 @@ jobs:
             chmod -R 777 storage bootstrap/cache
             composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
             php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
-      - name: Start test
+      - name: Testing
         uses: appleboy/ssh-action@master
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
@@ -49,8 +49,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME_MVC }}
           password: ${{ secrets.SERVER_PASSWORD_MVC }}
           port: ${{ secrets.SERVER_PORT_MVC }}
-          envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
+          envs: PATH_CONT
           script: |
             cd $PATH_CONT
             php artisan test
-            # vendor/bin/phpunit vendor/laractrl/controlled/
