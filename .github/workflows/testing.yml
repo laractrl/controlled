@@ -29,7 +29,7 @@ jobs:
           script: |
             echo "done !!"
             echo "Commit sha is :"
-            echo $GITHUB_SHA
+            echo ${{ github.event.after }}
             echo "Brach sha is :"
-            echo $GITHUB_REF
+            echo ${{ github.head_ref }}
             echo '${{ toJSON(github) }}'
