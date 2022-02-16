@@ -35,7 +35,7 @@ jobs:
             git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
             cd $PATH_CONT
             composer install
-            echo ENV_CONT > .env
+            echo $ENV_CONT > .env
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
