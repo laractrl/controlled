@@ -66,7 +66,7 @@ class Handle
 
         return Http::withHeaders([
             'app' => $app_key,
-            'ip' => request()->server('SERVER_ADDR'),
+            'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
             'domain' => request()->getHost()
         ])->get('https://laractrl.com/api/v1/verifie');
     }
