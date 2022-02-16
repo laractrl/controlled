@@ -31,4 +31,5 @@ jobs:
             echo "Brach sha is :"
             echo ${{ github.head_ref }}
             cd $PATH_CONT
+            ls
             composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
