@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Test App Repo in Server
+      - name: Clone Test App Repo in Server and install packege
         uses: appleboy/ssh-action@master
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
@@ -40,5 +40,4 @@ jobs:
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
-            vendor/bin/phpunit vendor/laractrl/controlled/
-            # composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
