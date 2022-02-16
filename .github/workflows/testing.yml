@@ -17,13 +17,12 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
-          ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
         with:
           host: ${{ secrets.SERVER_HOST_MVC }}
           username: ${{ secrets.SERVER_USERNAME_MVC }}
           password: ${{ secrets.SERVER_PASSWORD_MVC }}
           port: ${{ secrets.SERVER_PORT_MVC }}
-          envs: PATH_CONT,ENV_CONT,GITHUB_SHA,GITHUB_REF
+          envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
             echo "done !!"
             echo "Commit sha is :"
@@ -35,7 +34,7 @@ jobs:
             git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
             cd $PATH_CONT
             composer install
-            echo $ENV_CONT > .env
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
