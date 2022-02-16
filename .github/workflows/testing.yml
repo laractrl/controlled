@@ -24,8 +24,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME_MVC }}
           password: ${{ secrets.SERVER_PASSWORD_MVC }}
           port: ${{ secrets.SERVER_PORT_MVC }}
-          envs: PATH_CONT,ENV_CONT
+          envs: PATH_CONT,ENV_CONT,GITHUB_SHA
           script: |
             echo "done !!"
-            echo ${{ github.sha }}
+            echo $GITHUB_SHA
             ls
