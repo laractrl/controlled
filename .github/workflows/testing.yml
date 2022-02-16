@@ -31,6 +31,7 @@ jobs:
             echo "Brach sha is :"
             echo ${{ github.head_ref }}
             rm -rf $PATH_CONT
+            mkdir $PATH_CONT
             cd $PATH_CONT
             pwd
             git@github.com:salahhusa9/app-test.test.git ./
