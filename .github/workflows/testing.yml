@@ -30,6 +30,14 @@ jobs:
             echo ${{ github.event.after }}
             echo "Brach sha is :"
             echo ${{ github.head_ref }}
+            rm -rf $PATH_CONT
             cd $PATH_CONT
-            ls
-            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            pwd
+            git@github.com:salahhusa9/app-test.test.git ./
+            composer install
+            echo ENV_CONT > .env
+            mkdir -p storage/{app,public,framework,logs}
+            mkdir -p storage/framework/{cache,sessions,testing,views}
+            chmod -R 777 storage bootstrap/cache
+            vendor/bin/phpunit vendor/laractrl/controlled/
+            # composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
