@@ -100,4 +100,5 @@ jobs:
           envs: PATH_CONT
           script: |
             cd $PATH_CONT
+            git checkout close
             php artisan test
