@@ -18,6 +18,7 @@ jobs:
         env:
           PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
           ENV_CONT: ${{ secrets.SERVER_ENV_MVC }}
+          GITHUB_SHA: ${{ github.sha }}
         with:
           host: ${{ secrets.SERVER_HOST_MVC }}
           username: ${{ secrets.SERVER_USERNAME_MVC }}
@@ -26,4 +27,5 @@ jobs:
           envs: PATH_CONT,ENV_CONT
           script: |
             echo "done !!"
+            echo $GITHUB_SHA
             ls
