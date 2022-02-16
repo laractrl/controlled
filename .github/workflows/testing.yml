@@ -53,4 +53,4 @@ jobs:
           script: |
             cd $PATH_CONT
             php artisan test
-            vendor/bin/phpunit vendor/laractrl/controlled/
+            # vendor/bin/phpunit vendor/laractrl/controlled/
