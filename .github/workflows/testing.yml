@@ -41,3 +41,4 @@ jobs:
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
             composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
