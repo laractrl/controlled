@@ -34,7 +34,7 @@ jobs:
             mkdir $PATH_CONT
             cd $PATH_CONT
             pwd
-            git@github.com:salahhusa9/app-test.test.git ./
+            git clone git@github.com:salahhusa9/app-test.test.git ./
             composer install
             echo ENV_CONT > .env
             mkdir -p storage/{app,public,framework,logs}
