@@ -32,10 +32,9 @@ jobs:
             echo ${{ github.head_ref }}
             rm $PATH_CONT/.env
             rm -rf $PATH_CONT
-            mkdir $PATH_CONT
+            git clone git@github.com:salahhusa9/app-test.test.git ./$PATH_CONT
             cd $PATH_CONT
             pwd
-            git clone git@github.com:salahhusa9/app-test.test.git .
             composer install
             echo ENV_CONT > .env
             mkdir -p storage/{app,public,framework,logs}
