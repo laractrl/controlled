@@ -27,5 +27,5 @@ jobs:
           envs: PATH_CONT,ENV_CONT
           script: |
             echo "done !!"
-            echo $GITHUB_SHA
+            echo ${{ github.sha }}
             ls
