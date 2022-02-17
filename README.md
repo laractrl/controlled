@@ -6,6 +6,7 @@
 [![issues](https://img.shields.io/github/issues/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![forks](https://img.shields.io/github/forks/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![stars](https://img.shields.io/packagist/stars/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
+![example workflow](https://github.com/laractrl/controlled/actions/workflows/testing.yml/badge.svg)
 [![DeepSource](https://deepsource.io/gh/laractrl/controlled.svg/?label=active+issues&show_trend=true&token=GU7mZ7deZTs5GAazEp9DpXZD)](https://deepsource.io/gh/laractrl/controlled/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/laractrl/controlled.svg/?label=resolved+issues&show_trend=true&token=GU7mZ7deZTs5GAazEp9DpXZD)](https://deepsource.io/gh/laractrl/controlled/?ref=repository-badge)
 
