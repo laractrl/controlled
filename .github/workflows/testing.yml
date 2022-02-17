@@ -1,4 +1,4 @@
-name: Testing Package in Laravel Application
+name: Testing Package in live Laravel Application
 
 on:
   push:
