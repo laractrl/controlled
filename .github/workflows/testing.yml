@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+concurrency: 
+  group: 'live-testing'
+
 jobs:
   test-in-mvc-server:
     name: Test in MVC Server (open)
