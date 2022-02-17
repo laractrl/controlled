@@ -1,10 +1,13 @@
-name: Testing Package in Laravel Application
+name: Testing Package in live Laravel Application
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
+concurrency: 
+  group: 'live-testing'
 
 jobs:
   test-in-mvc-server:
