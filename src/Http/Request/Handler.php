@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Http;
 
 class Handler extends Http
 {
-    private $headers = [];
-    private $host = '';
-    private $apiUrl = 'api/v1';
+    private static $headers = [];
+    private static $host = '';
+    private static $apiUrl = 'api/v1';
 
     public function __construct()
     {
@@ -28,7 +28,7 @@ class Handler extends Http
     {
         $app_key = file_get_contents(Path::getTestKey());
 
-        $this->headers = [
+        self::$headers = [
             'app' => $app_key,
             'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
             'domain' => request()->getHost()
@@ -38,7 +38,7 @@ class Handler extends Http
 
     public function setHost()
     {
-        $this->host = 'laractrl.com';
+        self::$host = 'laractrl.com';
         return $this;
     }
 }
