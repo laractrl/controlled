@@ -21,7 +21,7 @@ class Handler
     {
         $host = $this->host;
         $apiUrl = $this->apiUrl;
-        return Http::withHeaders($this->headers)->get("https://`{$host}`/{$apiUrl}/verifie");
+        return Http::withHeaders($this->headers)->get("https://{$host}/{$apiUrl}/verifie");
     }
 
     public function setDefultHeaders()

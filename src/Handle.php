@@ -4,7 +4,6 @@ namespace Controlled;
 
 use Controlled\helpers\Path;
 use Controlled\Http\Request\Handler;
-use Illuminate\Support\Facades\Http;
 
 /**
  * Handler, have the main functions
