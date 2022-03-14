@@ -3,7 +3,7 @@
 namespace Controlled;
 
 use Controlled\helpers\Path;
-use Illuminate\Support\Facades\Http;
+use Controlled\Http\Request\Handler;
 
 /**
  * Handler, have the main functions
@@ -62,13 +62,8 @@ class Handle
      */
     public static function serverChecker()
     {
-        $app_key = file_get_contents(Path::getTestKey());
-
-        return Http::withHeaders([
-            'app' => $app_key,
-            'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
-            'domain' => request()->getHost()
-        ])->get('https://laractrl.com/api/v1/verifie');
+        $httpHandler = new Handler();
+        return $httpHandler->verifie();
     }
 
     /**
