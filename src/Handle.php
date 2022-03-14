@@ -61,9 +61,9 @@ class Handle
      *
      * @return \Illuminate\Http\Client\Response
      */
-    public static function serverChecker()
+    public static function serverChecker(Handler $httpHandler)
     {
-        return Handler::verifie();
+        return $httpHandler->verifie();
     }
 
     /**
