@@ -26,14 +26,11 @@ class Handler
 
     public function setDefultHeaders()
     {
-        $app_key = file_get_contents(Path::getTestKey());
-
         $this->headers = [
-            'app' => $app_key,
+            'app' => file_get_contents(Path::getTestKey()),
             'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
             'domain' => request()->getHost()
         ];
-
         return $this;
     }
 
