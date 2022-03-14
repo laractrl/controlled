@@ -13,8 +13,8 @@ class Handler extends Http
 
     public function __construct()
     {
-        $this->setDefultHeaders();
-        $this->setHost();
+        self::setDefultHeaders();
+        self::setHost();
     }
 
     public static function verifie()
@@ -24,7 +24,7 @@ class Handler extends Http
         return self::withHeaders(self::$headers)->get("https://`{$host}`/{$apiUrl}/verifie");
     }
 
-    public function setDefultHeaders()
+    public static function setDefultHeaders()
     {
         $app_key = file_get_contents(Path::getTestKey());
 
@@ -33,12 +33,10 @@ class Handler extends Http
             'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
             'domain' => request()->getHost()
         ];
-        return $this;
     }
 
-    public function setHost()
+    public static function setHost()
     {
         self::$host = 'laractrl.com';
-        return $this;
     }
 }
