@@ -7,5 +7,11 @@ return [
     */
     'urls' => [
         '/login'
+    ],
+    /*
+    / If you need to change the default view path :
+    */
+    'view' => [
+        'controlled::closed'
     ]
 ];
