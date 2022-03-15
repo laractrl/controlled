@@ -24,7 +24,7 @@
     },
     "autoload": {
         "files": [
-            "src/functions.php"
+            "helpers/functions.php"
         ],
         "psr-4": {
             "Controlled\\": "src/",
