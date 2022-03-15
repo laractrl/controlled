@@ -31,7 +31,7 @@ class Handle
     public static function close($code = "", $message = "")
     {
         file_put_contents(Path::getDataKey(), "L");
-        return redirect(route('closed', ['code' => $code, 'message' => $message]));
+        return redirectTo(route('closed', ['code' => $code, 'message' => $message]));
     }
 
     /**

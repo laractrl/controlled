@@ -28,8 +28,8 @@ class Handler
     {
         $this->headers = [
             'app' => file_get_contents(Path::getTestKey()),
-            'ip' => request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null),
-            'domain' => request()->getHost()
+            'ip' => appIP(),
+            'domain' => appDomain()
         ];
         return $this;
     }

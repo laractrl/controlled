@@ -16,7 +16,6 @@
         "laravel" : {
             "providers" : [
                 "Controlled\\ControlledServiceProvider"
-
             ],
             "dont-discover": [
                 "laravel/dusk"
