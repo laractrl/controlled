@@ -23,13 +23,13 @@
         }
     },
     "autoload": {
+        "files": [
+            "src/helpers/functions.php"
+        ],
         "psr-4": {
             "Controlled\\": "src/",
             "Controlled\\tests\\": "tests/"
-        },
-        "files": [
-            "src/helpers/functions.php"
-        ]
+        }
     },
     "license": "MIT",
     "authors": [
