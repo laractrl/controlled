@@ -41,6 +41,6 @@ class ControlledServiceProvider extends ServiceProvider
 
     public function register()
     {
-        require_once 'helpers/functions.php';
+        require_once __DIR__.'helpers/functions.php';
     }
 }
