@@ -1,4 +1,5 @@
 <?php
+namespace helpers;
 
 if (!function_exists('appDomain')) {
     function appDomain()
