@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('appDomain')) {    
+if (!function_exists('appDomain')) {
     function appDomain()
     {
         return request()->getHost();
