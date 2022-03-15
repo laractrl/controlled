@@ -38,4 +38,9 @@ class ControlledServiceProvider extends ServiceProvider
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
     }
+
+    public function register()
+    {
+        require_once'helpers/functions.php';
+    }
 }
