@@ -14,3 +14,8 @@ function appIp()
 {
     return request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null);
 }
+
+function redirectTo($url)
+{
+    return redirect($url);
+}
