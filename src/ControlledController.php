@@ -27,7 +27,7 @@ class ControlledController extends Controller
             [
                 'app_key' => $app_key ?? 'In Set',
                 'ip' => request()->server('SERVER_ADDR'),
-                'domain' => request()->getHost()
+                'domain' => appDomain()
             ]
         );
     }
