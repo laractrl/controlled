@@ -26,7 +26,7 @@ class ControlledController extends Controller
             200,
             [
                 'app_key' => $app_key ?? 'In Set',
-                'ip' => appIp(),
+                'ip' => appIP(),
                 'domain' => appDomain()
             ]
         );

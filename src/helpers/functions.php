@@ -10,7 +10,7 @@ function appDomain()
     return request()->getHost();
 }
 
-function appIp()
+function appIP()
 {
     return request()->server('SERVER_ADDR', $_SERVER['SERVER_ADDR'] ?? null);
 }

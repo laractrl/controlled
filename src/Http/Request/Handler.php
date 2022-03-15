@@ -28,7 +28,7 @@ class Handler
     {
         $this->headers = [
             'app' => file_get_contents(Path::getTestKey()),
-            'ip' => appIp(),
+            'ip' => appIP(),
             'domain' => appDomain()
         ];
         return $this;
