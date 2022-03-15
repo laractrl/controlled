@@ -1,5 +1,4 @@
 <?php
-namespace helpers;
 
 if (!function_exists('appDomain')) {
     function appDomain()
@@ -15,7 +14,9 @@ if (!function_exists('appIP')) {
     }
 }
 
-function redirectTo($url)
-{
-    return redirect($url);
+if (!function_exists('redirectTo')) {
+    function redirectTo($url)
+    {
+        return redirect($url);
+    }
 }
