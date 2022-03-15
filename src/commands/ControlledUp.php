@@ -43,7 +43,7 @@ class ControlledUp extends Command
      */
     public function handle()
     {
-        $testPath = Path::getDataKey();
+        $testPath = Path::getTestKey();
 
         file_put_contents(Path::getGitignore(), "*.key");
 

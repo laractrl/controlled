@@ -1,0 +1,105 @@
+name: Testing Package in live Laravel Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency: 
+  group: 'live-testing'
+
+jobs:
+  test-in-mvc-server:
+    name: Test in MVC Server (open)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Test App Repo in Server (MVC) and install packege
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
+        with:
+          host: ${{ secrets.SERVER_HOST_MVC }}
+          username: ${{ secrets.SERVER_USERNAME_MVC }}
+          password: ${{ secrets.SERVER_PASSWORD_MVC }}
+          port: ${{ secrets.SERVER_PORT_MVC }}
+          envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
+          script: |
+            echo "done !!"
+            echo "Commit sha is :"
+            echo ${{ github.event.after }}
+            echo "Brach sha is :"
+            echo ${{ github.head_ref }}
+            rm $PATH_CONT/.env
+            rm -rf $PATH_CONT
+            git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
+            cd $PATH_CONT
+            composer install
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            mkdir -p storage/{app,public,framework,logs}
+            mkdir -p storage/framework/{cache,sessions,testing,views}
+            chmod -R 777 storage bootstrap/cache
+            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
+      - name: Testing (MVC)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
+        with:
+          host: ${{ secrets.SERVER_HOST_MVC }}
+          username: ${{ secrets.SERVER_USERNAME_MVC }}
+          password: ${{ secrets.SERVER_PASSWORD_MVC }}
+          port: ${{ secrets.SERVER_PORT_MVC }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git checkout open
+            php artisan test
+
+  test-in-aps-server:
+    name: Test in APS Server (close)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Test App Repo in Server (APS) and install packege
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_APS }}
+        with:
+          host: ${{ secrets.SERVER_HOST_APS }}
+          username: ${{ secrets.SERVER_USERNAME_APS }}
+          password: ${{ secrets.SERVER_PASSWORD_APS }}
+          port: ${{ secrets.SERVER_PORT_APS }}
+          envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
+          script: |
+            echo "done !!"
+            echo "Commit sha is :"
+            echo ${{ github.event.after }}
+            echo "Brach sha is :"
+            echo ${{ github.head_ref }}
+            rm $PATH_CONT/.env
+            rm -rf $PATH_CONT
+            git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
+            cd $PATH_CONT
+            composer install
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            mkdir -p storage/{app,public,framework,logs}
+            mkdir -p storage/framework/{cache,sessions,testing,views}
+            chmod -R 777 storage bootstrap/cache
+            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
+      - name: Testing (APS)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_APS }}
+        with:
+          host: ${{ secrets.SERVER_HOST_APS }}
+          username: ${{ secrets.SERVER_USERNAME_APS }}
+          password: ${{ secrets.SERVER_PASSWORD_APS }}
+          port: ${{ secrets.SERVER_PORT_APS }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git checkout close
+            php artisan test

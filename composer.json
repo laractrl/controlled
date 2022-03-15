@@ -16,7 +16,6 @@
         "laravel" : {
             "providers" : [
                 "Controlled\\ControlledServiceProvider"
-
             ],
             "dont-discover": [
                 "laravel/dusk"
@@ -25,7 +24,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Controlled\\": "src/"
+            "Controlled\\": "src/",
+            "Controlled\\tests\\": "tests/"
         }
     },
     "license": "MIT",
