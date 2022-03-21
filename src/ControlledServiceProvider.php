@@ -21,7 +21,7 @@ class ControlledServiceProvider extends ServiceProvider
      */
     public function boot(Kernel $kernel)
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/controlled.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/controlled.php');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -29,11 +29,11 @@ class ControlledServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'controlled');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'controlled');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/controlled'),
-            __DIR__.'/../config/controlled.php' => config_path('controlled.php'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/controlled'),
+            __DIR__ . '/../config/controlled.php' => config_path('controlled.php'),
         ], 'controlled');
 
         $kernel->pushMiddleware(ControlledMiddleware::class);
@@ -41,6 +41,6 @@ class ControlledServiceProvider extends ServiceProvider
 
     public function register()
     {
-        require_once __DIR__.'/../helpers/functions.php';
+        require_once __DIR__ . '/../helpers/functions.php';
     }
 }
