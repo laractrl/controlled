@@ -24,7 +24,7 @@ class Path
      */
     public static function getTestKey()
     {
-        return base_path('tests\test.key');
+        return base_path('tests/test.key');
     }
 
     /**
@@ -34,6 +34,6 @@ class Path
      */
     public static function getGitignore()
     {
-        return base_path('tests\.gitignore');
+        return base_path('tests/.gitignore');
     }
 }
