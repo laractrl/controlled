@@ -39,6 +39,7 @@ class ControlledController extends Controller
      */
     public function closed()
     {
-        return view(config('view', null) ?? 'controlled::closed');
+        $view = config('view', null) ?? 'controlled::closed';
+        return view($view);
     }
 }
