@@ -26,7 +26,7 @@ Using this package you can easily control your laravel project
   php artisan vendor:publish --tag=controlled
 ```
 
-3) Setup command : 
+3) Setup command :
 
 ```php
   php artisan controlled:up APP_KEY
