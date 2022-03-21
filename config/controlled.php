@@ -12,6 +12,6 @@ return [
     / If you need to change the default view path :
     */
     'view' => [
-        'controlled::closed'
+        'vendor.controlled.closed'
     ]
 ];
