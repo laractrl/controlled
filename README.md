@@ -20,7 +20,7 @@ Using this package you can easily control your laravel project
   composer require laractrl/controlled
 ```
 
-2) Publishing view and config files :
+2) Publishing view and config files : 
 
 ```php
   php artisan vendor:publish --tag=controlled
