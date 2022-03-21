@@ -40,7 +40,7 @@ jobs:
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
-            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }}
+            composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
             php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
       - name: Testing (MVC)
         uses: appleboy/ssh-action@master
