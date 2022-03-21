@@ -2,7 +2,9 @@
 
 [![release](https://img.shields.io/github/release/laractrl/controlled)](https://github.com/laractrl/controlled/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/laractrl/controlled.svg)](https://packagist.org/packages/laractrl/controlled)
+![laravel](https://img.shields.io/badge/Laravel-8%7C9-red)
 [![Web site](https://img.shields.io/badge/website-laractrl.com-brightgreen)](https://laractrl.com)
+[![Web site Status](https://img.shields.io/website-up-down-green-red/http/laractrl.com)](https://laractrl.com)
 [![issues](https://img.shields.io/github/issues/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![forks](https://img.shields.io/github/forks/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![stars](https://img.shields.io/packagist/stars/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
