@@ -54,6 +54,8 @@ jobs:
           envs: PATH_CONT
           script: |
             cd $PATH_CONT
+            git add .
+            git commit -m"in server"
             git checkout open
             php artisan test
 
@@ -101,5 +103,7 @@ jobs:
           envs: PATH_CONT
           script: |
             cd $PATH_CONT
+            git add .
+            git commit -m"in server"
             git checkout close
             php artisan test
