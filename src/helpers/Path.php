@@ -14,7 +14,7 @@ class Path
      */
     public static function getDataKey()
     {
-        return base_path('tests\data.key');
+        return base_path('tests/data.key');
     }
 
     /**
