@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel" , "remote controlled" , "controlled-laravel" , "controlled"],
     "require": {
         "php": "^7.3|^8.0",
-        "guzzlehttp/guzzle": "^7.4"
+        "guzzlehttp/guzzle": "7.4.2"
     },
     "config": {
         "optimize-autoloader": true,
