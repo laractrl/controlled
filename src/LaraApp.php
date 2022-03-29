@@ -3,7 +3,7 @@
 namespace Controlled;
 
 class LaraApp
-{    
+{
     /**
      * Laravel App Status
      *
