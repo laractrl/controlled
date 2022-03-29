@@ -19,6 +19,9 @@
             "providers" : [
                 "Controlled\\ControlledServiceProvider"
             ],
+            "aliases": {
+                "LaraApp": "Controlled\\Facades\\LaraApp"
+            },
             "dont-discover": [
                 "laravel/dusk"
             ]
