@@ -12,6 +12,6 @@ class LaraApp
      */
     public function status($locally = true)
     {
-        return $locally ? Handle::localChecker() : Handle::serverChecker();
+        return $locally ? Handle::localChecker() : Handle::serverChecker()['status'];
     }
 }
