@@ -3,10 +3,10 @@
 namespace Controlled;
 
 use Controlled\commands\ControlledUp;
+use Controlled\Facades\LaraApp;
 use Controlled\Middleware\ControlledMiddleware;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
-use Illuminate\Support\Facades\App;
 
 /**
  * Controlled Service Provider
@@ -42,5 +42,9 @@ class ControlledServiceProvider extends ServiceProvider
     public function register()
     {
         require_once __DIR__ . '/../helpers/functions.php';
+
+        $this->app->bind('LaraApp', function ($app) {
+            return new LaraApp();
+        });
     }
 }
