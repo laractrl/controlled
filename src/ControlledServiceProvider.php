@@ -43,7 +43,7 @@ class ControlledServiceProvider extends ServiceProvider
     {
         require_once __DIR__ . '/../helpers/functions.php';
 
-        $this->app->bind('LaraApp', function($app) {
+        $this->app->bind('LaraApp', function ($app) {
             return new LaraApp();
         });
     }
