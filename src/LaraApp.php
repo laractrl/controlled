@@ -3,16 +3,15 @@
 namespace Controlled;
 
 class LaraApp
-{
-    private $result;
-
-    public function __construct()
+{    
+    /**
+     * Laravel App Status
+     *
+     * @param  boolean $local check locally or remotely
+     * @return boolean
+     */
+    public function status($locally = true)
     {
-        $this->result = 0;
-    }
-
-    public function test()
-    {
-        return $this->result;
+        return $locally ? Handle::localChecker() : Handle::serverChecker();
     }
 }
