@@ -26,7 +26,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT_MVC }}
           envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
-            echo "done !!"
             echo "Commit sha is :"
             echo ${{ github.event.after }}
             echo "Brach sha is :"
@@ -75,7 +74,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT_APS }}
           envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
-            echo "done !!"
             echo "Commit sha is :"
             echo ${{ github.event.after }}
             echo "Brach sha is :"
