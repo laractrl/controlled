@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [main]
 
-concurrency: 
-  group: 'live-testing'
+concurrency:
+  group: "live-testing"
 
 jobs:
   test-in-mvc-server:
@@ -26,7 +26,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT_MVC }}
           envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
-            echo "done !!"
             echo "Commit sha is :"
             echo ${{ github.event.after }}
             echo "Brach sha is :"
@@ -36,7 +35,7 @@ jobs:
             git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
             cd $PATH_CONT
             composer install
-            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            php -r "copy('.env.example', '.env');"
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
@@ -55,8 +54,26 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"all packege install => checkout => test"
             git checkout open
+            php -r "copy('.env.example', '.env');"
+            php artisan test
+      - name: Testing With Publish File (MVC)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
+        with:
+          host: ${{ secrets.SERVER_HOST_MVC }}
+          username: ${{ secrets.SERVER_USERNAME_MVC }}
+          password: ${{ secrets.SERVER_PASSWORD_MVC }}
+          port: ${{ secrets.SERVER_PORT_MVC }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git add .
+            git commit -m"Checkout => Publish File => Test"
+            git checkout open
+            php artisan vendor:publish --tag=controlled
             php artisan test
 
   test-in-aps-server:
@@ -75,7 +92,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT_APS }}
           envs: PATH_CONT,GITHUB_SHA,GITHUB_REF
           script: |
-            echo "done !!"
             echo "Commit sha is :"
             echo ${{ github.event.after }}
             echo "Brach sha is :"
@@ -85,7 +101,7 @@ jobs:
             git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./$PATH_CONT
             cd $PATH_CONT
             composer install
-            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            php -r "copy('.env.example', '.env');"
             mkdir -p storage/{app,public,framework,logs}
             mkdir -p storage/framework/{cache,sessions,testing,views}
             chmod -R 777 storage bootstrap/cache
@@ -104,6 +120,24 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"all packege install => checkout => test"
             git checkout close
+            php -r "copy('.env.example', '.env');"
+            php artisan test
+      - name: Testing With Publish File (APS)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_APS }}
+        with:
+          host: ${{ secrets.SERVER_HOST_APS }}
+          username: ${{ secrets.SERVER_USERNAME_APS }}
+          password: ${{ secrets.SERVER_PASSWORD_APS }}
+          port: ${{ secrets.SERVER_PORT_APS }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git add .
+            git commit -m"Checkout => Publish File => Test"
+            git checkout close
+            php artisan vendor:publish --tag=controlled
             php artisan test
