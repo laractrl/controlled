@@ -54,7 +54,7 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"all packege install => checkout => test"
             git checkout open
             php artisan test
       - name: Testing With Publish File (MVC)
@@ -70,7 +70,7 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"Checkout => Publish File => Test"
             git checkout close
             php artisan vendor:publish --tag=controlled
             php artisan test
@@ -119,7 +119,7 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"all packege install => checkout => test"
             git checkout close
             php artisan test
       - name: Testing With Publish File (APS)
@@ -135,7 +135,7 @@ jobs:
           script: |
             cd $PATH_CONT
             git add .
-            git commit -m"in server"
+            git commit -m"Checkout => Publish File => Test"
             git checkout close
             php artisan vendor:publish --tag=controlled
             php artisan test
