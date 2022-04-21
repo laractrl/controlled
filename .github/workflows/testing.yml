@@ -72,7 +72,7 @@ jobs:
             cd $PATH_CONT
             git add .
             git commit -m"Checkout => Publish File => Test"
-            git checkout close
+            git checkout open
             php artisan vendor:publish --tag=controlled
             php artisan test
 
