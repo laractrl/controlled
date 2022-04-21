@@ -11,7 +11,5 @@ return [
     /*
     / If you need to change the default view path :
     */
-    'view' => [
-        'vendor.controlled.closed'
-    ]
+    'view' => 'vendor.controlled.closed'
 ];
