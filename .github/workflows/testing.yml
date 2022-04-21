@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [main]
 
-concurrency: 
-  group: 'live-testing'
+concurrency:
+  group: "live-testing"
 
 jobs:
   test-in-mvc-server:
@@ -57,6 +57,23 @@ jobs:
             git commit -m"in server"
             git checkout open
             php artisan test
+      - name: Testing With Publish File (MVC)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_MVC }}
+        with:
+          host: ${{ secrets.SERVER_HOST_MVC }}
+          username: ${{ secrets.SERVER_USERNAME_MVC }}
+          password: ${{ secrets.SERVER_PASSWORD_MVC }}
+          port: ${{ secrets.SERVER_PORT_MVC }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git add .
+            git commit -m"in server"
+            git checkout close
+            php artisan vendor:publish --tag=controlled
+            php artisan test
 
   test-in-aps-server:
     name: Test in APS Server (close)
@@ -104,4 +121,21 @@ jobs:
             git add .
             git commit -m"in server"
             git checkout close
+            php artisan test
+      - name: Testing With Publish File (APS)
+        uses: appleboy/ssh-action@master
+        env:
+          PATH_CONT: ${{ secrets.SERVER_PATH_APS }}
+        with:
+          host: ${{ secrets.SERVER_HOST_APS }}
+          username: ${{ secrets.SERVER_USERNAME_APS }}
+          password: ${{ secrets.SERVER_PASSWORD_APS }}
+          port: ${{ secrets.SERVER_PORT_APS }}
+          envs: PATH_CONT
+          script: |
+            cd $PATH_CONT
+            git add .
+            git commit -m"in server"
+            git checkout close
+            php artisan vendor:publish --tag=controlled
             php artisan test
