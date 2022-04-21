@@ -56,6 +56,7 @@ jobs:
             git add .
             git commit -m"all packege install => checkout => test"
             git checkout open
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
             php artisan test
       - name: Testing With Publish File (MVC)
         uses: appleboy/ssh-action@master
@@ -121,6 +122,7 @@ jobs:
             git add .
             git commit -m"all packege install => checkout => test"
             git checkout close
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
             php artisan test
       - name: Testing With Publish File (APS)
         uses: appleboy/ssh-action@master
