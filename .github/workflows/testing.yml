@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main , ! github-workflows]
+    branches: [main]
 
 concurrency:
   group: "live-testing"
