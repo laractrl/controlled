@@ -14,7 +14,7 @@ jobs:
             matrix:
                 php: [7.4, 8.0]
                 laravel: [8.*, 9.*]
-                dependency-version: [prefer-lowest, prefer-stable]
+
                 os: [ubuntu-latest, windows-latest]
                 include:
                     - laravel: 9.*
@@ -27,7 +27,7 @@ jobs:
                     - laravel: 9.*
                       php: 7.4
 
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
         steps:
             - name: Checkout code
@@ -49,7 +49,7 @@ jobs:
                 mkdir -p storage/{app,public,framework,logs}
                 mkdir -p storage/framework/{cache,sessions,testing,views}
                 chmod -R 777 storage bootstrap/cache
-                composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+                git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
                 php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
 
@@ -58,7 +58,7 @@ jobs:
                 cd app
                 git add .
                 git commit -m"all packege install => checkout => test"
-                git checkout open
+                git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 php -r "copy('.env.example', '.env');"
                 php artisan test
 
@@ -67,6 +67,6 @@ jobs:
                 cd app
                 git add .
                 git commit -m"all packege install => checkout => test"
-                git checkout open
+                git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 php -r "copy('.env.example', '.env');"
                 php artisan test
