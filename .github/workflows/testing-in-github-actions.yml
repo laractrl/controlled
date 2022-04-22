@@ -45,6 +45,7 @@ jobs:
                 git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./app
                 cd app
                 git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
+                composer update --prefer-dist --no-interaction --no-suggest
                 composer install
                 php -r "copy('.env.example', '.env');"
                 mkdir -p storage/{app,public,framework,logs}
