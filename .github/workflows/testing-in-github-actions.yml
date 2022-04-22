@@ -44,12 +44,12 @@ jobs:
               run: |
                 git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./app
                 cd app
+                git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 composer install
                 php -r "copy('.env.example', '.env');"
                 mkdir -p storage/{app,public,framework,logs}
                 mkdir -p storage/framework/{cache,sessions,testing,views}
                 chmod -R 777 storage bootstrap/cache
-                git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
                 php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
 
