@@ -13,18 +13,18 @@ jobs:
         strategy:
             matrix:
                 php: [7.4, 8.0]
-                laravel: [8.*, 9.*]
+                laravel: [8.x, 9.x]
 
                 os: [ubuntu-latest, windows-latest]
                 include:
-                    - laravel: 9.*
+                    - laravel: 9.x
                       php: 8.0
-                    - laravel: 8.*
+                    - laravel: 8.x
                       php: 7.4
                 exclude:
-                    - laravel: 8.*
+                    - laravel: 8.x
                       php: 8.0
-                    - laravel: 9.*
+                    - laravel: 9.x
                       php: 7.4
 
         name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
