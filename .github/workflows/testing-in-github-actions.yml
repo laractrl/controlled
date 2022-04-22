@@ -1,0 +1,71 @@
+name: Testing Package in Laravel Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+    php-tests:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                php: [7.3, 8.0]
+                laravel: [9.*, 8.*]
+                dependency-version: [prefer-lowest, prefer-stable]
+                os: [ubuntu-latest, windows-latest]
+                exclude:
+                    - laravel: 9.*
+                      php: 8.0
+                    - laravel: 8.*
+                      php: 7.3
+
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v1
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v1
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+                  coverage: none
+
+            - name: Install dependencies
+              run: |
+                  composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+                  composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+
+            - name: Clone Test App and install packege
+              run: |
+                git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./app
+                cd app
+                composer install
+                php -r "copy('.env.example', '.env');"
+                mkdir -p storage/{app,public,framework,logs}
+                mkdir -p storage/framework/{cache,sessions,testing,views}
+                chmod -R 777 storage bootstrap/cache
+                composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
+                php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
+
+            - name: Execute tests
+              run: |
+                cd app
+                git add .
+                git commit -m"all packege install => checkout => test"
+                git checkout open
+                php -r "copy('.env.example', '.env');"
+                php artisan test
+
+            - name: Execute tests With Publish File
+              run: |
+                cd app
+                git add .
+                git commit -m"all packege install => checkout => test"
+                git checkout open
+                php -r "copy('.env.example', '.env');"
+                php artisan test
