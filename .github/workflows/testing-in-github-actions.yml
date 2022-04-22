@@ -40,11 +40,6 @@ jobs:
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
                   coverage: none
 
-            - name: Install dependencies
-              run: |
-                  composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-                  composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
-
             - name: Clone Test App and install packege
               run: |
                 git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./app
@@ -54,6 +49,7 @@ jobs:
                 mkdir -p storage/{app,public,framework,logs}
                 mkdir -p storage/framework/{cache,sessions,testing,views}
                 chmod -R 777 storage bootstrap/cache
+                composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
                 composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
                 php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
 
