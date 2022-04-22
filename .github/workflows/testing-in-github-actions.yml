@@ -47,8 +47,6 @@ jobs:
                 git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 composer update --prefer-dist --no-interaction --no-suggest
                 php -r "copy('.env.example', '.env');"
-                mkdir -p storage/{app,public,framework,logs}
-                mkdir -p storage/framework/{cache,sessions,testing,views}
                 chmod -R 777 storage bootstrap/cache
                 composer require laractrl/controlled:dev-main#${{ github.head_ref }}#${{ github.event.after }} -W
                 php artisan controlled:up ${{ secrets.LARACTRL_KEY }}
