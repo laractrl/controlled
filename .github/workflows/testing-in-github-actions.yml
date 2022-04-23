@@ -43,7 +43,7 @@ jobs:
             - name: Clone Test App and install packege
               run: |
                 git clone "https://"${{ secrets.ACCESS_TOKEN  }}"@github.com/salahhusa9/app-test.test.git" ./app
-                cd app
+                cd ./app
                 git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 composer update --prefer-dist --no-interaction --no-suggest
                 php -r "copy('.env.example', '.env');"
@@ -53,14 +53,14 @@ jobs:
 
             - name: Execute tests
               run: |
-                cd app
+                cd ./app
                 git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 php -r "copy('.env.example', '.env');"
                 php artisan test
 
             - name: Execute tests With Publish File
               run: |
-                cd app
+                cd ./app
                 git checkout open-P${{ matrix.php }}-L${{ matrix.laravel }}
                 php -r "copy('.env.example', '.env');"
                 php artisan test
