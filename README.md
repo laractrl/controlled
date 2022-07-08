@@ -13,7 +13,8 @@
 [![DeepSource](https://deepsource.io/gh/laractrl/controlled.svg/?label=resolved+issues&show_trend=true&token=GU7mZ7deZTs5GAazEp9DpXZD)](https://deepsource.io/gh/laractrl/controlled/?ref=repository-badge)
 
 Using this package you can easily control your laravel project
-
+## Video
+[![LaraCtrl Minyatore how to](https://user-images.githubusercontent.com/64494826/178027143-9aa51e30-16bd-46ac-b553-65dd6d797ecf.png)](https://youtu.be/sK9wsXppx4U)
 ## Installing
  :warning: **Don't install this package in local** : Be very careful here!
  
