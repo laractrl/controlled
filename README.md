@@ -9,11 +9,12 @@
 [![forks](https://img.shields.io/github/forks/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 [![stars](https://img.shields.io/packagist/stars/laractrl/controlled)](https://packagist.org/packages/laractrl/controlled)
 ![example workflow](https://github.com/laractrl/controlled/actions/workflows/testing.yml/badge.svg)
-[![DeepSource](https://deepsource.io/gh/laractrl/controlled.svg/?label=active+issues&show_trend=true&token=GU7mZ7deZTs5GAazEp9DpXZD)](https://deepsource.io/gh/laractrl/controlled/?ref=repository-badge)
-[![DeepSource](https://deepsource.io/gh/laractrl/controlled.svg/?label=resolved+issues&show_trend=true&token=GU7mZ7deZTs5GAazEp9DpXZD)](https://deepsource.io/gh/laractrl/controlled/?ref=repository-badge)
 
-Using this package you can easily control your laravel project
-## Video
+Secure Your Right After Delivered Your web app.
+Before they can pay you, your customer needs test the app on their server, but you are unsure if they will still pay you afterward. 
+Let's track and control your web application remotely so you don't have to worry any more.
+
+## Video Tutorial
 [![LaraCtrl Minyatore how to](https://user-images.githubusercontent.com/64494826/178027143-9aa51e30-16bd-46ac-b553-65dd6d797ecf.png)](https://youtu.be/sK9wsXppx4U)
 ## Installing
  :warning: **Don't install this package in local** : Be very careful here!
