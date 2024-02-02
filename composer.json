@@ -7,7 +7,7 @@
         "php": "^7.3|^8.0",
         "laravel/framework": "^8|^9",
         "guzzlehttp/guzzle": "^7.4",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^11.0"
     },
     "config": {
         "optimize-autoloader": true,
